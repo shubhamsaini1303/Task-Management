@@ -22,39 +22,6 @@ const TaskManager = () => {
   const [statusFilter, setStatusFilter] = useState("All");
   const [dueDateFilter, setDueDateFilter] = useState("");
 
-  // const fetchTasks = async () => {
-  //   try {
-  //     const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/task/my`, {
-  //       withCredentials: true,
-  //     });
-  //     if (response.status === 200) {
-  //       let filteredTasks = response.data.tasks;
-
-  //       // Apply Status Filter
-  //       if (statusFilter !== "All") {
-  //         filteredTasks = filteredTasks.filter((task) => task.status === statusFilter);
-  //       }
-
-  //       // Apply Due Date Filter
-  //       if (dueDateFilter) {
-  //         filteredTasks = filteredTasks.filter((task) => {
-  //           const taskDate = new Date(task.dueDate).toLocaleDateString();
-  //           const filterDate = new Date(dueDateFilter).toLocaleDateString();
-  //           return taskDate === filterDate;
-  //         });
-  //       }
-
-  //       setTasks(filteredTasks);
-  //     } else {
-  //       toast.error("Failed to fetch tasks.");
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     toast.error("Please Login First and Access this resource");
-  //   }
-  // };
-
-
   const fetchTasks = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/task/my`, {
