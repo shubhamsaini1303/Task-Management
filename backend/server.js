@@ -8,16 +8,6 @@ configDotenv();
 
 const app = express();
 
-// CORS Configuration: Allow frontend to make requests to the backend
-// const corsOptions = {
-//   origin: "http://localhost:5173",  // Frontend URL
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true,  // Allow credentials (cookies)
-// };
-
-// Use CORS middleware
-// app.use(cors(corsOptions));
-
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 app.use(express.json());
