@@ -44,7 +44,9 @@ const Register = () => {
     <div className="h-full flex items-center justify-center p-4 bg-gray-100">
       <ToastContainer position="top-right" autoClose={3000} />
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <div className="text-3xl font-bold text-center text-gray-800 mb-6">Register</div>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Task Managements</h2>
+            <hr />
+        <div className="text-xl font-bold text-center text-gray-800 mb-6">Register</div>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <label htmlFor="name" className="block text-sm font-medium text-gray-600">
