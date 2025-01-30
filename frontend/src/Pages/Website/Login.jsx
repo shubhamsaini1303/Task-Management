@@ -71,7 +71,9 @@ const Login = () => {
     <div className="h-screen flex items-center justify-center bg-gray-100">
       <ToastContainer position="top-right" autoClose={3000} />
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Login</h2>
+             <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Task Managements</h2>
+           <hr />
+        <h2 className="text-xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
         <form onSubmit={handleSubmit}>
           {/* Email Input */}
