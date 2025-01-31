@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -14,11 +15,25 @@ const Profile = () => {
   const [newPassword, setNewPassword] = useState("");
   const navigate = useNavigate();
 
+
+       const token = Cookies.get("token");
+    
+     useEffect(() => {
+       if (!token) {
+         toast.error("Please login first!");
+         setTimeout(() => navigate("/login"), 1500);
+       }
+     }, [token, navigate]);
+  
+  
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/me`, {
-          withCredentials: true,
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/me`, 
+          {
+        headers: { Authorization: `Bearer ${token}` }
+          // withCredentials: true,
         });
 
         if (response.status === 200) {
@@ -38,7 +53,7 @@ const Profile = () => {
     };
 
     fetchProfile();
-  }, [navigate]);
+  }, []);
 
   const handleLogout = () => {
     localStorage.clear();
