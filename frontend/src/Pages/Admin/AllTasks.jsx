@@ -1,17 +1,35 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
+
 
 const AllTasks = () => {
   const [tasks, setTasks] = useState([]);
+  const navigate = useNavigate();
+
+ const token = Cookies.get("token");
+
+  useEffect(() => {
+    if (!token) {
+      toast.error("Please login first!");
+      setTimeout(() => navigate("/login"), 1500);
+    }
+  }, [token, navigate]);
+
+
 
   // Fetch tasks from API
   const fetchTasks = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/task/admin/get-all-tasks`, {
-        withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` }
+        // withCredentials: true,
       });
       if (response.status === 200) {
         setTasks(response.data.tasks);
@@ -29,7 +47,9 @@ const AllTasks = () => {
   // Delete task
   const deleteTaskByAdmin = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/v1/task/delete-by-admin/${id}`, { withCredentials: true });
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/v1/task/delete-by-admin/${id}`, 
+       { headers: { Authorization: `Bearer ${token}` } });
+        // { withCredentials: true });
       toast.success("Task deleted successfully!");
       fetchTasks();
     } catch (error) {
