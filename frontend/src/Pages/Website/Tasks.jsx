@@ -74,7 +74,7 @@
        console.error(error);
        if (error.response && error.response.data) {
           // Show specific error message from API if available
-          toast.error(error.response.data.message || "An error occurred.");
+          // toast.error(error.response.data.message || "An error occurred.");
        } else {
          toast.error("Please Login First and Access this resource");
        }
