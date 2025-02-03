@@ -46,9 +46,9 @@ exports.mytask = async (req, res) => {
       .populate('user', 'name email') // Fetch user details (name and email)
       .sort({ createdAt: -1 });
 
-    if (tasks.length === 0) {
-      return res.status(404).json({ message: "No tasks found" });
-    }
+    // if (tasks.length === 0) {
+    //   return res.status(404).json({ message: "No tasks found" });
+    // }
 
     return res.status(200).json({
       tasks,
