@@ -62,9 +62,9 @@
            });
          }
   
-         // if (filteredTasks.length === 0) {
-         //   toast.info("No tasks found with the applied filters.");
-         // }
+         if (filteredTasks.length === 0) {
+           toast.info("No tasks found with the applied filters.");
+         }
   
          setTasks(filteredTasks);
        } else {
